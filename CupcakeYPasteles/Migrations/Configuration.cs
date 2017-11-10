@@ -10,7 +10,6 @@ namespace CupcakeYPasteles.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "CupcakeYPasteles.Models.ApplicationDbContext";
         }
 
         protected override void Seed(CupcakeYPasteles.Models.ApplicationDbContext context)

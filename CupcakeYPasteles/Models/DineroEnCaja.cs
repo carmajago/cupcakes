@@ -13,9 +13,10 @@ namespace CupcakeYPasteles.Models
 
 
         [Display(Name ="Fecha")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        
         public DateTime fecha { get; set; }
 
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "$ {0:#,0}")]
         [Display(Name ="Dinero total")]
         public double dinero { get; set; }
 

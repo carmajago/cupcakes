@@ -51,6 +51,7 @@ namespace CupcakeYPasteles.Controllers
         {
             if (ModelState.IsValid)
             {
+                dineroEnCaja.fecha = DateTime.Now;
                 db.DineroEnCajas.Add(dineroEnCaja);
                 db.SaveChanges();
                 return RedirectToAction("Index");
