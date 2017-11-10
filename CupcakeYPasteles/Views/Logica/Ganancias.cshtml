@@ -1,0 +1,80 @@
+﻿@model  List<CupcakeYPasteles.Models.GraficaGanancias>
+
+@{
+    ViewBag.Title = "Ganancias";
+}
+
+<h1 class="text-center">Reportes</h1>
+
+
+<div>
+    
+    <p>
+        <h2>Dinero en caja: @ViewBag.total</h2>
+       
+    </p>
+
+</div>
+
+<hr />
+<div class="row">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <div id="columnchart_material" style="width: 800px; height: 500px;"></div>
+</div>
+
+
+<script type="text/javascript">
+      google.charts.load('current', { 'packages': ['bar'] });
+   
+    var salida ;
+
+      $(document).ready(function () {
+          //Load Data Here
+          var chartData = null;
+          $.ajax({
+              url: '/Logica/getChar',
+              type: 'GET',
+              dataType: 'json',
+              data: '',
+              success: function (d) {
+                  chartData = d;
+              },
+              error: function () {
+                  alert('Error!');
+              }
+          }).done(function () {
+              
+              salida = chartData;
+              google.charts.setOnLoadCallback(drawChart);
+          });
+      });
+
+
+      function drawChart() {
+          
+          var salida2 = $.parseJSON(salida);
+          data = google.visualization.arrayToDataTable(
+              salida2
+          );
+       
+
+
+          var options = {
+              chart: {
+                  title: 'Rendimiento',
+                  subtitle: 'Ventas ,gastos y ganancias por mes',
+              }
+          };
+
+          var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+          chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+</script>
+
+
+
+
+
+
+
