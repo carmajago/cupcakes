@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace CupcakeYPasteles.Controllers
 {
+    [Authorize]
     public class LogicaController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

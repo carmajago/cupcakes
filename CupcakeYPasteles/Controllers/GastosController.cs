@@ -21,20 +21,7 @@ namespace CupcakeYPasteles.Controllers
             return View(db.Gastoes.ToList());
         }
 
-        // GET: Gastos/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Gasto gasto = db.Gastoes.Find(id);
-            if (gasto == null)
-            {
-                return HttpNotFound();
-            }
-            return View(gasto);
-        }
+
 
         // GET: Gastos/Create
         public ActionResult Create()
@@ -68,36 +55,7 @@ namespace CupcakeYPasteles.Controllers
             return View(gasto);
         }
 
-        // GET: Gastos/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Gasto gasto = db.Gastoes.Find(id);
-            if (gasto == null)
-            {
-                return HttpNotFound();
-            }
-            return View(gasto);
-        }
 
-        // POST: Gastos/Edit/5
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
-        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,nombre,cantidad,descripcion,fecha,valor")] Gasto gasto)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(gasto).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(gasto);
-        }
 
         // GET: Gastos/Delete/5
         public ActionResult Delete(int? id)
@@ -120,6 +78,12 @@ namespace CupcakeYPasteles.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Gasto gasto = db.Gastoes.Find(id);
+
+            double dinero = dineroAcomulado();
+            DineroEnCaja caja = new DineroEnCaja();
+            caja.fecha = DateTime.Now;
+            caja.dinero = dinero + gasto.valor;
+            db.DineroEnCajas.Add(caja);
             db.Gastoes.Remove(gasto);
             db.SaveChanges();
             return RedirectToAction("Index");

@@ -54,8 +54,8 @@
                     @Html.DisplayFor(modelItem => item.valor)
                 </td>
                 <td>
-                    <button class="btn btn-warning" onclick="location.href='@Url.Action("Edit")'">Editar</button>
-                    <button class="btn btn-danger" onclick="location.href='@Url.Action("Delete")'">Eliminar</button>
+                    
+                    <button class="btn btn-danger" onclick="location.href='@Url.Action("Delete",new { id=item.id})'">Eliminar</button>
                    
                 </td>
             </tr>

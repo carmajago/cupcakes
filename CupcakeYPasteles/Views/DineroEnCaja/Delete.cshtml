@@ -1,12 +1,12 @@
 ﻿@model CupcakeYPasteles.Models.DineroEnCaja
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Eliminar";
 }
 
-<h2>Delete</h2>
+<h2>Eliminar</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>¿Estás seguro de eliminar?</h3>
 <div>
     <h4>DineroEnCaja</h4>
     <hr />
@@ -34,7 +34,7 @@
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <button class="btn btn-default" onclick="location.href='@Url.Action("Index")'">Regresar</button>
         </div>
     }
 </div>

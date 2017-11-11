@@ -21,20 +21,7 @@ namespace CupcakeYPasteles.Controllers
             return View(db.Ingresoes.ToList());
         }
 
-        // GET: Ingresos/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Ingreso ingreso = db.Ingresoes.Find(id);
-            if (ingreso == null)
-            {
-                return HttpNotFound();
-            }
-            return View(ingreso);
-        }
+
 
         // GET: Ingresos/Create
         public ActionResult Create()
@@ -67,40 +54,11 @@ namespace CupcakeYPasteles.Controllers
             return View(ingreso);
         }
 
-        // GET: Ingresos/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Ingreso ingreso = db.Ingresoes.Find(id);
-            if (ingreso == null)
-            {
-                return HttpNotFound();
-            }
-            return View(ingreso);
-        }
+       
 
-        // POST: Ingresos/Edit/5
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
-        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,nombre,descripcion,fecha,valor")] Ingreso ingreso)
-        {
-            if (ModelState.IsValid)
-            {
-                
-                
-                db.Entry(ingreso).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(ingreso);
-        }
+   
 
-        // GET: Ingresos/Delete/5
+       
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -121,6 +79,14 @@ namespace CupcakeYPasteles.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Ingreso ingreso = db.Ingresoes.Find(id);
+
+            double dinero = dineroAcomulado();
+            DineroEnCaja caja = new DineroEnCaja();
+            caja.fecha = DateTime.Now;
+            caja.dinero = dinero - ingreso.valor;
+            db.DineroEnCajas.Add(caja);
+
+            
             db.Ingresoes.Remove(ingreso);
             db.SaveChanges();
             return RedirectToAction("Index");

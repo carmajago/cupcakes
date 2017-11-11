@@ -5,6 +5,9 @@
 }
 
 <h1 class="text-center">Dinero en caja</h1>
+
+<button class="btn btn-primary" onclick="location.href='@Url.Action("Create")'">Agregar nuevo</button>
+
 <hr />
 
 <table class="table table-striped table-bordered" id="tablacaja" cellspacing="0" width="100%">
@@ -16,6 +19,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.dinero)
             </th>
+            <th></th>
          
         </tr>
     </thead>
@@ -30,7 +34,9 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.dinero)
                 </td>
-                
+                <td>
+                    <button class="btn btn-danger" onclick="location.href='@Url.Action("Delete",new { id=item.id})'">Eliminar</button>
+                </td>
             </tr>
         }
     </tbody>
