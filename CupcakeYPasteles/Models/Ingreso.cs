@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -11,9 +12,10 @@ namespace CupcakeYPasteles.Models
         [Key]
         public int id { get; set; }
 
-        [Required]
+
         [Display(Name ="Nombre")]
-        public string nombre { get; set; }
+        [ForeignKey("producto")]
+        public int productofk { get; set; }
 
 
         [Display(Name ="Descripción")]
@@ -25,6 +27,10 @@ namespace CupcakeYPasteles.Models
         [Display(Name ="Valor")]
         [DisplayFormat(ApplyFormatInEditMode = true,DataFormatString = "$ {0:#,0}")]
         public double valor { get; set; }
+
+
+        [Display(Name = "Nombre")]
+        public Producto producto { get; set; }
 
 
     }

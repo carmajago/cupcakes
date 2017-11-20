@@ -15,11 +15,12 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.fecha)
+                @Html.DisplayNameFor(model => model.material.id)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.nombre)
+                @Html.DisplayNameFor(model => model.fecha)
             </th>
+            
             <th>
                 @Html.DisplayNameFor(model => model.cantidad)
             </th>
@@ -38,11 +39,12 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.fecha)
+                    @Html.DisplayFor(modelItem => item.material.id)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.nombre)
+                    @Html.DisplayFor(modelItem => item.fecha)
                 </td>
+              
                 <td>
                     @Html.DisplayFor(modelItem => item.cantidad)
                 </td>

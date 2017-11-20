@@ -23,6 +23,6 @@ textarea {
     max-width: 280px;
 }
 .navbar-main {
-    background-color: #00586D;
-    border-color: #00586D;
+    background-color: rgb(65, 154, 145);
+    border-color: rgb(216, 216, 216);
 }

@@ -35,5 +35,9 @@ namespace CupcakeYPasteles.Models
         public System.Data.Entity.DbSet<CupcakeYPasteles.Models.Ingreso> Ingresoes { get; set; }
 
         public System.Data.Entity.DbSet<CupcakeYPasteles.Models.DineroEnCaja> DineroEnCajas { get; set; }
+
+        public System.Data.Entity.DbSet<CupcakeYPasteles.Models.Producto> Productoes { get; set; }
+
+        public System.Data.Entity.DbSet<CupcakeYPasteles.Models.Material> Materials { get; set; }
     }
 }

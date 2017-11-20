@@ -195,14 +195,34 @@
     <Compile Include="Controllers\IngresosController.cs" />
     <Compile Include="Controllers\LogicaController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MaterialesController.cs" />
+    <Compile Include="Controllers\ProductosController.cs" />
+    <Compile Include="Migrations\201711201642481_mgasn.cs" />
+    <Compile Include="Migrations\201711201642481_mgasn.Designer.cs">
+      <DependentUpon>201711201642481_mgasn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711201815556_cascasf.cs" />
+    <Compile Include="Migrations\201711201815556_cascasf.Designer.cs">
+      <DependentUpon>201711201815556_cascasf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711201823572_cascasfsa.cs" />
+    <Compile Include="Migrations\201711201823572_cascasfsa.Designer.cs">
+      <DependentUpon>201711201823572_cascasfsa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711201831059_cascasf34re.cs" />
+    <Compile Include="Migrations\201711201831059_cascasf34re.Designer.cs">
+      <DependentUpon>201711201831059_cascasf34re.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711201854505_cascasf34rescv.cs" />
+    <Compile Include="Migrations\201711201854505_cascasf34rescv.Designer.cs">
+      <DependentUpon>201711201854505_cascasf34rescv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Material.cs" />
+    <Compile Include="Models\Producto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711102140565_cascsacscsa.cs" />
-    <Compile Include="Migrations\201711102140565_cascsacscsa.Designer.cs">
-      <DependentUpon>201711102140565_cascsacscsa.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DineroEnCaja.cs" />
     <Compile Include="Models\Gasto.cs" />
@@ -521,6 +541,16 @@
     <Content Include="Views\DineroEnCaja\Create.cshtml" />
     <Content Include="Views\DineroEnCaja\Delete.cshtml" />
     <Content Include="Views\DineroEnCaja\Index.cshtml" />
+    <Content Include="Views\Productos\Create.cshtml" />
+    <Content Include="Views\Productos\Delete.cshtml" />
+    <Content Include="Views\Productos\Details.cshtml" />
+    <Content Include="Views\Productos\Edit.cshtml" />
+    <Content Include="Views\Productos\Index.cshtml" />
+    <Content Include="Views\Materiales\Create.cshtml" />
+    <Content Include="Views\Materiales\Delete.cshtml" />
+    <Content Include="Views\Materiales\Details.cshtml" />
+    <Content Include="Views\Materiales\Edit.cshtml" />
+    <Content Include="Views\Materiales\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -541,8 +571,20 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711102140565_cascsacscsa.resx">
-      <DependentUpon>201711102140565_cascsacscsa.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711201642481_mgasn.resx">
+      <DependentUpon>201711201642481_mgasn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711201815556_cascasf.resx">
+      <DependentUpon>201711201815556_cascasf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711201823572_cascasfsa.resx">
+      <DependentUpon>201711201823572_cascasfsa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711201831059_cascasf34re.resx">
+      <DependentUpon>201711201831059_cascasf34re.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711201854505_cascasf34rescv.resx">
+      <DependentUpon>201711201854505_cascasf34rescv.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

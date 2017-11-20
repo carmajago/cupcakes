@@ -18,6 +18,7 @@ namespace CupcakeYPasteles.Controllers
         // GET: Ingresos
         public ActionResult Index()
         {
+            var gastoes = db.Ingresoes.Include(g => g.producto);
             return View(db.Ingresoes.ToList());
         }
 
@@ -26,6 +27,8 @@ namespace CupcakeYPasteles.Controllers
         // GET: Ingresos/Create
         public ActionResult Create()
         {
+            ViewBag.productofk = new SelectList(db.Productoes, "id", "nombre");
+
             return View();
         }
 
@@ -50,7 +53,7 @@ namespace CupcakeYPasteles.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            ViewBag.productofk = new SelectList(db.Productoes, "id", "nombre", ingreso.productofk);
             return View(ingreso);
         }
 

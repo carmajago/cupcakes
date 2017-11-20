@@ -10,7 +10,6 @@ using CupcakeYPasteles.Models;
 
 namespace CupcakeYPasteles.Controllers
 {
-    [Authorize]
     public class GastosController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -18,14 +17,29 @@ namespace CupcakeYPasteles.Controllers
         // GET: Gastos
         public ActionResult Index()
         {
-            return View(db.Gastoes.ToList());
+            var gastoes = db.Gastoes.Include(g => g.material);
+            return View(gastoes.ToList());
         }
 
-
+        // GET: Gastos/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Gasto gasto = db.Gastoes.Find(id);
+            if (gasto == null)
+            {
+                return HttpNotFound();
+            }
+            return View(gasto);
+        }
 
         // GET: Gastos/Create
         public ActionResult Create()
         {
+            ViewBag.materialFK = new SelectList(db.Materials, "id", "nombre");
             return View();
         }
 
@@ -38,6 +52,7 @@ namespace CupcakeYPasteles.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 double dinero = dineroAcomulado();
                 DineroEnCaja caja = new DineroEnCaja();
                 caja.fecha = DateTime.Now;
@@ -52,10 +67,42 @@ namespace CupcakeYPasteles.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.materialFK = new SelectList(db.Materials, "id", "nombre", gasto.materialFK);
             return View(gasto);
         }
 
+        // GET: Gastos/Edit/5
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Gasto gasto = db.Gastoes.Find(id);
+            if (gasto == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.materialFK = new SelectList(db.Materials, "id", "nombre", gasto.materialFK);
+            return View(gasto);
+        }
 
+        // POST: Gastos/Edit/5
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "id,materialFK,cantidad,descripcion,fecha,valor")] Gasto gasto)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(gasto).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.materialFK = new SelectList(db.Materials, "id", "nombre", gasto.materialFK);
+            return View(gasto);
+        }
 
         // GET: Gastos/Delete/5
         public ActionResult Delete(int? id)
@@ -100,7 +147,7 @@ namespace CupcakeYPasteles.Controllers
         public double dineroAcomulado()
         {
             var query = "select * from dineroencajas where id=(select max(id) dinero from dineroencajas)";
-            
+
             List<DineroEnCaja> lista = db.Database.SqlQuery<DineroEnCaja>(query).ToList();
 
             return lista.First().dinero;
