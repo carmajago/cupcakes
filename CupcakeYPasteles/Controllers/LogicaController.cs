@@ -1,11 +1,11 @@
 ﻿using CupcakeYPasteles.Models;
 using System;
+using System.Data.Entity;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-
+using System.Net;
 namespace CupcakeYPasteles.Controllers
 {
     [Authorize]
@@ -22,7 +22,7 @@ namespace CupcakeYPasteles.Controllers
             
             return View();
         }
-        public double dineroAcomulado()
+        public int dineroAcomulado()
         {
             var query = "select * from dineroencajas where id=(select max(id) dinero from dineroencajas)";
 
@@ -87,6 +87,39 @@ namespace CupcakeYPasteles.Controllers
             return new JsonResult { Data=strDatos ,JsonRequestBehavior=JsonRequestBehavior.AllowGet };
 
 
+        }
+
+        public JsonResult charGanancias()
+        {
+            DataTable datos = new DataTable();
+            datos.Columns.Add(new DataColumn("Tareas", typeof(string)));
+            datos.Columns.Add(new DataColumn("Horas por día", typeof(string)));
+
+            
+            var lista = db.Productoes.Include(xx=>xx.ingresos);
+            string salida="[[\"Tareas\",\"Horas por dia\"],";
+
+
+            foreach(var item in lista)
+            {
+
+                datos.Rows.Add(new Object[] { "\"" + item.nombre + "\"",item.cantidad});
+            }
+
+            foreach (DataRow dr in datos.Rows)
+            {
+                salida += "[";
+                salida += "" + dr[0] + "," + dr[1];
+
+                salida += "],";
+            }
+
+
+
+            salida = salida.Substring(0, salida.Length - 1);
+
+            salida+="]";
+            return new JsonResult { Data = salida, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
     }
 }

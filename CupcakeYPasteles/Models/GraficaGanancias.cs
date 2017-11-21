@@ -9,8 +9,8 @@ namespace CupcakeYPasteles.Models
     {
         public string ano { get; set; }
         public string mes { get; set; }
-        public double gasto { get; set; }
-        public double ingreso { get; set; }
-        public double ganancia { get; set; }
+        public int gasto { get; set; }
+        public int ingreso { get; set; }
+        public int ganancia { get; set; }
     }
 }

@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
+using System.Net;
 using System.Data.Entity;
 using System.Linq;
-using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using CupcakeYPasteles.Models;
+using System.Collections.Generic;
 
 namespace CupcakeYPasteles.Controllers
 {
@@ -53,7 +51,7 @@ namespace CupcakeYPasteles.Controllers
             if (ModelState.IsValid)
             {
 
-                double dinero = dineroAcomulado();
+                int dinero = dineroAcomulado();
                 DineroEnCaja caja = new DineroEnCaja();
                 caja.fecha = DateTime.Now;
                 caja.dinero = dinero - gasto.valor;
@@ -126,7 +124,7 @@ namespace CupcakeYPasteles.Controllers
         {
             Gasto gasto = db.Gastoes.Find(id);
 
-            double dinero = dineroAcomulado();
+            int dinero = dineroAcomulado();
             DineroEnCaja caja = new DineroEnCaja();
             caja.fecha = DateTime.Now;
             caja.dinero = dinero + gasto.valor;
@@ -144,7 +142,7 @@ namespace CupcakeYPasteles.Controllers
             }
             base.Dispose(disposing);
         }
-        public double dineroAcomulado()
+        public int dineroAcomulado()
         {
             var query = "select * from dineroencajas where id=(select max(id) dinero from dineroencajas)";
 

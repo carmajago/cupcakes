@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: #e6e6e6;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -25,4 +26,13 @@ textarea {
 .navbar-main {
     background-color: rgb(65, 154, 145);
     border-color: rgb(216, 216, 216);
+}
+.chart{
+    background:#ffffff;
+    padding:20px;
+    margin-bottom:20px;
+}
+.devsite-table-wrapper {
+    margin: 16px 0;
+    overflow: auto;
 }

@@ -11,16 +11,19 @@
 <button class="btn btn-primary" onclick="location.href='@Url.Action("Create")'">Agregar nuevo</button>
 
 <hr />
-<table class="table table-striped table-bordered" id="tablaingresos" cellspacing="0" width="100%">
+<table class="table table-striped table-bordered" id="tablaingresos" cellspacing="0" width="100%" style="background:#FFFFFF">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.producto.id)
-            </th>
+            
             <th>
                 @Html.DisplayNameFor(model => model.fecha)
             </th>
-          
+            <th>
+                @Html.DisplayNameFor(model => model.producto.nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cantidad)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.descripcion)
             </th>
@@ -35,11 +38,15 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.producto.id)
-                </td>
+               
                 <td>
                     @Html.DisplayFor(modelItem => item.fecha)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.producto.nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cantidad)
                 </td>
                 
                 <td>

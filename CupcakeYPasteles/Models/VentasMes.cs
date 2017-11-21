@@ -10,6 +10,6 @@ namespace CupcakeYPasteles.Models
 
         public int ano { get; set; }
         public int mes { get; set; }
-        public double valor { get; set; }
+        public int valor { get; set; }
     }
 }

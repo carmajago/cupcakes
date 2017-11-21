@@ -18,7 +18,7 @@ namespace CupcakeYPasteles.Models
 
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "$ {0:#,0}")]
         [Display(Name ="Dinero total")]
-        public double dinero { get; set; }
+        public int dinero { get; set; }
 
     }
 }

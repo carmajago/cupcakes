@@ -18,6 +18,19 @@ namespace CupcakeYPasteles.Models
 
 
         public virtual List<Ingreso> ingresos { get; set; }
-        
+
+        public int cantidad { get {
+                int temp = 0;
+                if (ingresos !=null)
+                {
+                    foreach (var item in ingresos)
+                    {
+                        temp += item.valor;
+
+                    }
+                }
+
+                return temp; } }
+
     }
 }

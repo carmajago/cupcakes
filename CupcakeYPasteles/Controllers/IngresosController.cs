@@ -41,7 +41,7 @@ namespace CupcakeYPasteles.Controllers
         {
             if (ModelState.IsValid)
             {
-                double dinero = dineroAcomulado();
+                int dinero = dineroAcomulado();
                 DineroEnCaja caja = new DineroEnCaja();
                 caja.fecha = DateTime.Now;
                 caja.dinero = dinero + ingreso.valor;
@@ -83,7 +83,7 @@ namespace CupcakeYPasteles.Controllers
         {
             Ingreso ingreso = db.Ingresoes.Find(id);
 
-            double dinero = dineroAcomulado();
+            int dinero = dineroAcomulado();
             DineroEnCaja caja = new DineroEnCaja();
             caja.fecha = DateTime.Now;
             caja.dinero = dinero - ingreso.valor;
@@ -104,7 +104,7 @@ namespace CupcakeYPasteles.Controllers
             base.Dispose(disposing);
         }
 
-        public double dineroAcomulado()
+        public int dineroAcomulado()
         {
             var query = "select * from dineroencajas where id=(select max(id) dinero from dineroencajas)";
             

@@ -8,10 +8,10 @@
 
 
 <div>
-    
+
     <p>
         <h2>Dinero en caja: @ViewBag.total</h2>
-       
+
     </p>
 
 </div>
@@ -19,60 +19,127 @@
 <hr />
 <div class="row">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <div id="columnchart_material" style="width: 100%; height: 500px;"></div>
+
+    <div class="col-xs-12 chart devsite-table-wrapper">
+        <div id="columnchart_material" style="width: 100%; height: 500px; margin:0 auto"></div>
+    </div>
+    <div class=" chart devsite-table-wrapper">
+        <div id="piechart" style="width: 600px; height: 333px; margin:0 auto"></div>
+    </div>
 </div>
 
 
+
+
+
+
+
+
+
 <script type="text/javascript">
-      google.charts.load('current', { 'packages': ['bar'] });
-   
-    var salida ;
+    google.charts.load('current', { 'packages': ['bar'] });
 
-      $(document).ready(function () {
-          //Load Data Here
-          var chartData = null;
-          $.ajax({
-              url: '/Logica/getChar',
-              type: 'GET',
-              dataType: 'json',
-              data: '',
-              success: function (d) {
-                  chartData = d;
-              },
-              error: function () {
-                  alert('Error!');
-              }
-          }).done(function () {
-              
-              salida = chartData;
-              google.charts.setOnLoadCallback(drawChart);
-          });
-      });
+    var salida;
+    
+    $(document).ready(function () {
+       
+        //Load Data Here
+        var chartData = null;
+        $.ajax({
+            url: '/Logica/getChar',
+            type: 'GET',
+            dataType: 'json',
+            data: '',
+            success: function (d) {
+                chartData = d;
+            },
+            error: function () {
+                alert('Error!');
+            }
+        }).done(function () {
 
+            salida = chartData;
+            google.charts.setOnLoadCallback(drawChart);
+        });
 
-      function drawChart() {
-          
-          var salida2 = $.parseJSON(salida);
-          data = google.visualization.arrayToDataTable(
-              salida2
-          );
+        
        
 
+    });
 
-          var options = {
-              chart: {
-                  title: 'Rendimiento',
-                  subtitle: 'Ventas ,gastos y ganancias por mes',
-              }
-          };
 
-          var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+        function drawChart() {
+            
+        var salida2 = $.parseJSON(salida);
+        data = google.visualization.arrayToDataTable(
+            salida2
+        );
 
-          chart.draw(data, google.charts.Bar.convertOptions(options));
-      }
+        var options = {
+            chart: {
+                title: 'Rendimiento',
+                subtitle: 'Ventas ,gastos y ganancias por mes',
+            }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+    }
 </script>
 
+<script type="text/javascript">
+    var datapie = null;
 
+    $(document).ready(function () {
+        //Load Data Here
+        var chartData2 = null;
+        $.ajax({
+            url: '/Logica/charGanancias',
+            type: 'GET',
+            dataType: 'json',
+            data: '',
+            success: function (d) {
+                chartData2 = d;
+            },
+            error: function () {            
+                alert('Error asa!');
+            }
+        }).done(function () {
+
+            datapie = chartData2;
+            google.charts.setOnLoadCallback(drawChart2);
+        });
+
+
+
+
+    });
+
+
+
+
+    google.charts.load('current', { 'packages': ['corechart'] });
+   // google.charts.setOnLoadCallback(drawChart2);
+
+    function drawChart2() {
+        
+        var temp = $.parseJSON(datapie);
+        var data = google.visualization.arrayToDataTable(
+            temp
+        );
+
+        var options = {
+            title: 'Ingresos  por producto',
+            'is3D': true,
+         
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+    }
+</script>
 
 
 

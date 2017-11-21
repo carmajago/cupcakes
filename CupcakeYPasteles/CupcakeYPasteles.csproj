@@ -217,6 +217,22 @@
     <Compile Include="Migrations\201711201854505_cascasf34rescv.Designer.cs">
       <DependentUpon>201711201854505_cascasf34rescv.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711210353122_caciprd.cs" />
+    <Compile Include="Migrations\201711210353122_caciprd.Designer.cs">
+      <DependentUpon>201711210353122_caciprd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711210548221_caciprdvhy.cs" />
+    <Compile Include="Migrations\201711210548221_caciprdvhy.Designer.cs">
+      <DependentUpon>201711210548221_caciprdvhy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711210553331_caciprdvodks.cs" />
+    <Compile Include="Migrations\201711210553331_caciprdvodks.Designer.cs">
+      <DependentUpon>201711210553331_caciprdvodks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711211622242_asdasu.cs" />
+    <Compile Include="Migrations\201711211622242_asdasu.Designer.cs">
+      <DependentUpon>201711211622242_asdasu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Material.cs" />
     <Compile Include="Models\Producto.cs" />
@@ -488,6 +504,7 @@
     <Content Include="Scripts\DataTables\responsive.semanticui.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery.mask.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -543,12 +560,10 @@
     <Content Include="Views\DineroEnCaja\Index.cshtml" />
     <Content Include="Views\Productos\Create.cshtml" />
     <Content Include="Views\Productos\Delete.cshtml" />
-    <Content Include="Views\Productos\Details.cshtml" />
     <Content Include="Views\Productos\Edit.cshtml" />
     <Content Include="Views\Productos\Index.cshtml" />
     <Content Include="Views\Materiales\Create.cshtml" />
     <Content Include="Views\Materiales\Delete.cshtml" />
-    <Content Include="Views\Materiales\Details.cshtml" />
     <Content Include="Views\Materiales\Edit.cshtml" />
     <Content Include="Views\Materiales\Index.cshtml" />
   </ItemGroup>
@@ -585,6 +600,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711201854505_cascasf34rescv.resx">
       <DependentUpon>201711201854505_cascasf34rescv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711210353122_caciprd.resx">
+      <DependentUpon>201711210353122_caciprd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711210548221_caciprdvhy.resx">
+      <DependentUpon>201711210548221_caciprdvhy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711210553331_caciprdvodks.resx">
+      <DependentUpon>201711210553331_caciprdvodks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711211622242_asdasu.resx">
+      <DependentUpon>201711211622242_asdasu.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -18,7 +18,7 @@ namespace CupcakeYPasteles.Models
         public int materialFK { get; set; }
 
         [Display(Name ="Cantidad")]
-        public string cantidad { get; set; }
+        public int cantidad { get; set; }
 
         [Display(Name = "Descripción")]
         public string descripcion { get; set; }
@@ -28,10 +28,10 @@ namespace CupcakeYPasteles.Models
 
         [Display(Name = "Valor")]
         [DisplayFormat(ApplyFormatInEditMode = true,DataFormatString = "$ {0:#,0}")]
-        public double valor { get; set; }
+        public int valor { get; set; }
 
        
-        public Material material { get; set; }
+        public virtual Material material { get; set; }
 
     }
 }
